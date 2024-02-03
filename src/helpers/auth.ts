@@ -1,4 +1,7 @@
 const callback_url = import.meta.env.VITE_OAUTH_CALLBACK;
+const applicationScopes = "read:blocks write:blocks";
+const applicationName = "Zarabatan";
+
 export const getAuthInfo = () => ({
   server:
     (import.meta.env.VITE_SERVER as string) ??
@@ -14,9 +17,9 @@ export const authApp = async (server: string) => {
   const response = await fetch(`https://${server}/api/v1/apps`, {
     method: "POST",
     body: new URLSearchParams({
-      client_name: "SaberTooth",
+      client_name: applicationName,
       redirect_uris: callback_url,
-      scopes: "read write",
+      scopes: applicationScopes,
       website: "https://github.com/thiagojedi/sabertooth/",
     }),
   });
@@ -35,7 +38,7 @@ export const authorizeApp = (server: string, client_id: string) => {
   authorizeUrl.searchParams.append("response_type", "code");
   authorizeUrl.searchParams.append("client_id", client_id);
   authorizeUrl.searchParams.append("redirect_uri", callback_url);
-  authorizeUrl.searchParams.append("scope", "read write");
+  authorizeUrl.searchParams.append("scope", applicationScopes);
   window.location.href = authorizeUrl.toString();
 };
 export const getToken = async (code: string) => {
@@ -58,17 +61,16 @@ export const getToken = async (code: string) => {
   }
 };
 export const logout = async () => {
-  const {
-    server,
-    token,
-    clientId: client_id,
-    clientSecret: client_secret,
-  } = getAuthInfo();
+  const { server, token, clientId, clientSecret } = getAuthInfo();
 
   if (server) {
+    const formData = new FormData();
+    formData.set("client_id", clientId);
+    formData.set("client_secret", clientSecret);
+    formData.set("token", token);
     await fetch(`https://${server}/oauth/revoke`, {
       method: "POST",
-      body: new URLSearchParams({ client_id, client_secret, token }),
+      body: formData,
     }).catch((e) => console.error(e));
   }
 
