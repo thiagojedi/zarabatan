@@ -13,7 +13,6 @@ export class RequestError extends Error {
 }
 
 export const getFetcher = ({ server, token } = getAuthInfo()) => {
-  console.log(server);
   if (!server) {
     return undefined;
   }

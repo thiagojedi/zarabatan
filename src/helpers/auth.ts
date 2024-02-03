@@ -1,5 +1,4 @@
 const callback_url = import.meta.env.VITE_OAUTH_CALLBACK;
-
 export const getAuthInfo = () => ({
   server:
     (import.meta.env.VITE_SERVER as string) ??
@@ -9,7 +8,6 @@ export const getAuthInfo = () => ({
   clientId: localStorage.getItem("zb_client_id")!,
   clientSecret: localStorage.getItem("zb_client_secret")!,
 });
-
 export const authApp = async (server: string) => {
   localStorage.setItem("instance_server", server);
 
@@ -32,7 +30,6 @@ export const authApp = async (server: string) => {
     authorizeApp(server, client_id);
   }
 };
-
 export const authorizeApp = (server: string, client_id: string) => {
   const authorizeUrl = new URL(`https://${server}/oauth/authorize`);
   authorizeUrl.searchParams.append("response_type", "code");
@@ -41,7 +38,6 @@ export const authorizeApp = (server: string, client_id: string) => {
   authorizeUrl.searchParams.append("scope", "read write");
   window.location.href = authorizeUrl.toString();
 };
-
 export const getToken = async (code: string) => {
   const { server, clientId, clientSecret } = getAuthInfo();
 
@@ -61,7 +57,6 @@ export const getToken = async (code: string) => {
     localStorage.setItem("zb_token", access_token);
   }
 };
-
 export const logout = async () => {
   const {
     server,
