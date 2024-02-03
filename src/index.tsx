@@ -1,43 +1,67 @@
-import { render } from 'preact';
+import { render } from "preact";
+import { useCallback } from "preact/hooks";
+import useSWR, { SWRConfig } from "swr";
+import { getFetcher } from "./request";
+import useSWRMutation from "swr/mutation";
 
-import preactLogo from './assets/preact.svg';
-import './style.css';
+const useDomainBlocks = () =>
+  useSWR<string[]>("/api/v1/domain_blocks", {
+    fallbackData: [],
+  });
+
+async function newBlock(url, { arg }: { arg: FormData }) {
+  const fetcher = getFetcher();
+
+  await fetcher(url, "POST", arg);
+}
+
+const useNewBlockMutation = () =>
+  useSWRMutation("/api/v1/domain_blocks", newBlock);
+
+const BlockForm = () => {
+  const { trigger } = useNewBlockMutation();
+  return (
+    <section>
+      <h2>Add new Block:</h2>
+      <form
+        onSubmit={(e) => {
+          e.preventDefault();
+          trigger(new FormData(e.currentTarget));
+        }}
+      >
+        <input type="text" name="domain" />
+        <input type="submit" value="Add Block" />
+      </form>
+    </section>
+  );
+};
+
+const BlockList = () => {
+  const { data } = useDomainBlocks();
+
+  return (
+    <section>
+      <h2>Blocked Domains</h2>
+      <ul>
+        {data.map((domain) => (
+          <li key={domain}>{domain}</li>
+        ))}
+      </ul>
+    </section>
+  );
+};
 
 export function App() {
-	return (
-		<div>
-			<a href="https://preactjs.com" target="_blank">
-				<img src={preactLogo} alt="Preact logo" height="160" width="160" />
-			</a>
-			<h1>Get Started building Vite-powered Preact Apps </h1>
-			<section>
-				<Resource
-					title="Learn Preact"
-					description="If you're new to Preact, try the interactive tutorial to learn important concepts"
-					href="https://preactjs.com/tutorial"
-				/>
-				<Resource
-					title="Differences to React"
-					description="If you're coming from React, you may want to check out our docs to see where Preact differs"
-					href="https://preactjs.com/guide/v10/differences-to-react"
-				/>
-				<Resource
-					title="Learn Vite"
-					description="To learn more about Vite and how you can customize it to fit your needs, take a look at their excellent documentation"
-					href="https://vitejs.dev"
-				/>
-			</section>
-		</div>
-	);
+  return (
+    <SWRConfig value={{ fetcher: getFetcher() }}>
+      <h1>Zarabatan</h1>
+      <p>Simple and efficient way to silence Mastodon instances</p>
+      <hr />
+      <BlockForm />
+      <hr />
+      <BlockList />
+    </SWRConfig>
+  );
 }
 
-function Resource(props) {
-	return (
-		<a href={props.href} target="_blank" class="resource">
-			<h2>{props.title}</h2>
-			<p>{props.description}</p>
-		</a>
-	);
-}
-
-render(<App />, document.getElementById('app'));
+render(<App />, document.getElementById("app"));

@@ -16,5 +16,8 @@
 	},
 	"eslintConfig": {
 		"extends": "preact"
+	},
+	"dependencies": {
+		"swr": "^2.2.4"
 	}
 }
