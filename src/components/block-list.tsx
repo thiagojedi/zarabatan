@@ -9,7 +9,7 @@ export const BlockList = () => {
     <section>
       <h2>Blocked Domains</h2>
       <ul>
-        {data.map((domain) => (
+        {data?.map((domain) => (
           <li key={domain}>
             {domain}
             <button onClick={() => trigger(domain)}>Unblock</button>
