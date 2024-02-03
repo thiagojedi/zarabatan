@@ -1,6 +1,6 @@
 import useSWR from "swr";
 import useSWRMutation from "swr/mutation";
-import { blockDomain } from "./services";
+import { blockDomain, removeBlock } from "./services";
 
 export const useDomainBlocks = () =>
   useSWR<string[]>("/api/v1/domain_blocks", {
@@ -8,3 +8,11 @@ export const useDomainBlocks = () =>
   });
 export const useNewBlockMutation = () =>
   useSWRMutation("/api/v1/domain_blocks", blockDomain);
+
+export const useRemoveBlockMutation = () => {
+  const { trigger } = useSWRMutation("/api/v1/domain_blocks", removeBlock, {
+    rollbackOnError: true,
+  });
+
+  return { trigger };
+};

@@ -19,7 +19,7 @@ export const getFetcher = ({ server, token } = getAuthInfo()) => {
 
   async function fetcher<T = unknown>(
     key: string,
-    method: "POST",
+    method: "POST" | "DELETE",
     data?: Record<string, string> | FormData,
   ): Promise<T>;
   async function fetcher<T = unknown>(
@@ -29,7 +29,7 @@ export const getFetcher = ({ server, token } = getAuthInfo()) => {
   ): Promise<T>;
   async function fetcher<T = unknown>(
     key: string,
-    method: "GET" | "POST" = "GET",
+    method: "GET" | "POST" | "DELETE" = "GET",
     data?: Record<string, string> | FormData,
   ): Promise<T> {
     const response = await fetch(`https://${server}${key}`, {
