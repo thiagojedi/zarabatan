@@ -32,7 +32,7 @@ export const LoginForm = () => {
   }
   return (
     <p>
-      <h2>Tell us your instance</h2>
+      <h2>Tell me your instance</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
