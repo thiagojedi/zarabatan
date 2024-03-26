@@ -22,13 +22,22 @@ export function App() {
       <aside>
         <LoginForm />
       </aside>
-      {config?.token && (
-        <main>
-          <BlockForm />
+      <main>
+        {config?.token && <BlockForm />}
 
-          <BlockList />
-        </main>
-      )}
+        {config?.token && <BlockList />}
+      </main>
+      <footer>
+        <span>Made With &lt;3 in Brazil.</span>
+        <span>
+          Source code:{" "}
+          <a href="https://github.com/thiagojedi/zarabatan">Github</a>
+        </span>
+        <span>
+          Contact:{" "}
+          <a href="https://mastodon.com.br/@jedi">@jedi@mastodon.com.br</a>
+        </span>
+      </footer>
     </SWRConfig>
   );
 }

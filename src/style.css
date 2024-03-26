@@ -3,6 +3,10 @@ body {
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
+a {
+    color: unset;
+}
+
 header,
 main,
 aside {
@@ -11,10 +15,18 @@ aside {
     text-align: center;
 }
 
+footer {
+    margin: 0 auto;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+}
+
 main {
     display: grid;
     grid-template-columns: 1fr 2fr;
-    min-height: 40vh;
+    min-height: 50vh;
 }
 
 table {
