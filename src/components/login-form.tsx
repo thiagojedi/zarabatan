@@ -41,9 +41,10 @@ export const LoginForm = () => {
       >
         <input
           type="text"
-          placeholder="i.e. example.com"
+          placeholder="e.g. example.com"
           value={server}
           onChange={(e) => setServer(e.currentTarget.value)}
+          required
         />
         <input type="submit" value="Login" />
       </form>
