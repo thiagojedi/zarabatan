@@ -31,7 +31,7 @@ export const LoginForm = () => {
     );
   }
   return (
-    <section>
+    <p>
       <h2>Tell us your instance</h2>
       <form
         onSubmit={(e) => {
@@ -47,6 +47,6 @@ export const LoginForm = () => {
         />
         <input type="submit" value="Login" />
       </form>
-    </section>
+    </p>
   );
 };

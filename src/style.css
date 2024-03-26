@@ -1,0 +1,23 @@
+header,
+main,
+aside {
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+main {
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+}
+
+table {
+    width: 100%;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-content: stretch;
+    gap: 0.5rem;
+}
