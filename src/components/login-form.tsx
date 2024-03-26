@@ -1,6 +1,7 @@
 import { useEffect, useState } from "preact/hooks";
 import { authApp, getToken, logout } from "../helpers/auth";
 import { useAppConfig } from "../hooks";
+import { Fragment } from "react";
 
 export const LoginForm = () => {
   const { config, refreshConfig } = useAppConfig();
@@ -17,17 +18,20 @@ export const LoginForm = () => {
 
   if (config?.server) {
     return (
-      <p>
-        Please, remember to logout before leaving this page:{" "}
-        <button
-          onClick={async () => {
-            await logout();
-            await refreshConfig();
-          }}
-        >
-          Logout
-        </button>
-      </p>
+      <Fragment>
+        <p>You are now logged in.</p>
+        <p>
+          Please, remember to logout before leaving this page:{" "}
+          <button
+            onClick={async () => {
+              await logout();
+              await refreshConfig();
+            }}
+          >
+            Logout
+          </button>
+        </p>
+      </Fragment>
     );
   }
   return (

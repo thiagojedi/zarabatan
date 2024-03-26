@@ -4,9 +4,11 @@ import { getFetcher } from "./helpers/request";
 import { BlockForm } from "./components/block-form";
 import { BlockList } from "./components/block-list";
 import { LoginForm } from "./components/login-form";
+import { BlockInfo } from "./components/block-info";
 import { useAppConfig } from "./hooks";
 
 import "./style.css";
+import { Fragment } from "react";
 
 export function App() {
   const { config } = useAppConfig();
@@ -19,14 +21,23 @@ export function App() {
         </p>
       </header>
       <hr />
-      <aside>
-        <LoginForm />
-      </aside>
-      <main>
-        {config?.token && <BlockForm />}
 
-        {config?.token && <BlockList />}
-      </main>
+      <div class="grid">
+        <main>
+          <LoginForm />
+
+          {config?.token && (
+            <Fragment>
+              <BlockForm />
+              <BlockList />
+            </Fragment>
+          )}
+        </main>
+        <aside>
+          <BlockInfo />
+        </aside>
+      </div>
+
       <footer>
         <span>Made With &lt;3 in Brazil.</span>
         <span>

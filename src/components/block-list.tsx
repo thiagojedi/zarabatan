@@ -5,6 +5,10 @@ export const BlockList = () => {
 
   const { trigger } = useRemoveBlockMutation();
 
+  if (!data?.length) {
+    return null;
+  }
+
   return (
     <section>
       <h2>Blocked Domains</h2>
