@@ -15,8 +15,7 @@ export const BlockForm: FC<{ disabled?: boolean }> = ({ disabled }) => {
         }}
       >
         <label for="domain">
-          Any domain, doest not need to be a Mastodon instance or even exist
-          yet.
+          Any domain, doesn't need to be a Mastodon instance or even exist yet.
         </label>
         <input
           disabled={disabled}

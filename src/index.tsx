@@ -15,10 +15,8 @@ export function App() {
   return (
     <SWRConfig value={{ fetcher: getFetcher(config) }}>
       <header>
-        <h1>Zarabatan (beta)</h1>
-        <p>
-          Simple and effective way to silence Mastodon instances at distance
-        </p>
+        <h1>Zarabatan (beta*)</h1>
+        <p>Simple and effective way to silence instances at distance</p>
       </header>
       <hr />
 

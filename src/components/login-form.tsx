@@ -36,7 +36,7 @@ export const LoginForm = () => {
   }
   return (
     <p>
-      <h2>Tell me your instance</h2>
+      <h2>Tell me your instance*</h2>
       <form
         onSubmit={(e) => {
           e.preventDefault();
@@ -52,6 +52,11 @@ export const LoginForm = () => {
         />
         <input type="submit" value="Login" />
       </form>
+      <p>
+        <small>
+          * currently only works with services that comply with Mastodon API
+        </small>
+      </p>
     </p>
   );
 };
