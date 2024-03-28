@@ -1,6 +1,6 @@
 export const BlockInfo = () => (
   <div style={{ gridArea: "info", textAlign: "start" }}>
-    <h2>What silencing does?</h2>
+    <h2>What does silencing mean?</h2>
     <p>
       Domain silencing, also known as Domain Blocking, is a moderation tool for
       users that, for any reason, don't want to interact with{" "}
