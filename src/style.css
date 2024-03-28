@@ -1,53 +1,51 @@
 body {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
     Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
 }
 
 a {
-    color: unset;
+  color: unset;
 }
 
 header {
-    max-width: 1000px;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
 }
 
 footer {
-    margin: 0 auto;
-    text-align: center;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    gap: 0.5rem;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
 }
 
 .grid {
-    max-width: 1000px;
-    margin: 0 auto 1rem;
-    gap: 1rem;
+  max-width: 1000px;
+  margin: 0 auto 1rem;
+  gap: 1rem;
 }
 
-
-
 table {
-    text-align: center;
-    width: 100%;
+  text-align: center;
+  width: 100%;
 }
 
 form {
-    display: flex;
-    gap: 0.5rem;
-    margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+  margin: 0 auto;
 }
 
 aside form {
-    justify-content: center;
+  justify-content: center;
 }
 
 main form {
-    align-content: stretch;
-    flex-direction: column;
+  align-content: stretch;
+  flex-direction: column;
 }
 
 @media screen and (min-width: 500px) {
@@ -56,9 +54,9 @@ main form {
     grid-template-rows: auto;
     grid-template-columns: 3fr 2fr;
     grid-template-areas:
-    "login info"
-    "form info"
-    "list info";
+      "login info"
+      "form info"
+      "list info";
   }
 
   footer {
