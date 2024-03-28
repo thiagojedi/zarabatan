@@ -30,7 +30,7 @@ export const BlockInfo = () => (
       </ul>
     </p>
 
-    <h2>What silencing does not?</h2>
+    <h2>What silencing is not.</h2>
     <p>
       Silencing a server <em>DOES NOT</em> prevent that server to see your
       PUBLIC or UNLISTED posts.
